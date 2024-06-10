@@ -6,3 +6,13 @@ class Cliente
     @inicio_atendimento = nil
     @fim_atendimento = nil
   end
+
+  def tempo_espera
+    @inicio_atendimento - @chegada
+  end
+
+  def tempo_no_sistema
+    @fim_atendimento - @chegada
+  end
+
+end
