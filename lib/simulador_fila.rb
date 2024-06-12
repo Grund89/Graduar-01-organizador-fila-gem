@@ -1,3 +1,4 @@
+require "simulador_fila/version"
 class Cliente
   attr_accessor :chegada, :inicio_atendimento, :fim_atendimento
 
@@ -13,6 +14,15 @@ class Cliente
 
   def tempo_no_sistema
     @fim_atendimento - @chegada
+  end
+
+  def simular(ciclos)
+    ciclos.times do
+      chegada_cliente
+      atender_cliente
+    end
+
+    calcular_estatisticas
   end
 
 end
