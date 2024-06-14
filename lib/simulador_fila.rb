@@ -28,6 +28,14 @@ class Cliente
       @ocupacao_servidor = 0
     end
 
+    def chegada_cliente
+      intervalo_chegada = rand(1..5)
+      @tempo_atual += intervalo_chegada
+      cliente = Cliente.new(@tempo_atual)
+      @fila << cliente
+
+    end
+
     def simular(ciclos)
       ciclos.times do
         chegada_cliente
