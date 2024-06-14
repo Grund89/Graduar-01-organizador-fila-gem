@@ -36,6 +36,22 @@ class Cliente
 
     end
 
+    def atender_cliente
+      return if @fila.empty?
+
+      cliente = @fila.shift
+      cliente.inicio_atendimento = @tempo_atual
+      tempo_atendimento = rand(2..6)
+      cliente.fim_atendimento = @tempo_atual + tempo_atendimento
+      @tempo_atual = cliente.fim_atendimento
+
+      @clientes_atendidos += 1
+      @total_tempo_espera += cliente.tempo_espera
+      @total_tempo_sistema += cliente.tempo_no_sistema
+      @ocupacao_servidor += tempo_atendimento
+
+    end
+
     def simular(ciclos)
       ciclos.times do
         chegada_cliente
